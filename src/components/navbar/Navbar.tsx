@@ -17,16 +17,14 @@ const Navbar = () => {
   );
 
   return (
-    <div className="fixed w-full z-10 bg-ffffff/5 p-4">
-      <div className="container mx-auto">
+    <div className="fixed w-full z-10 bg-ffffff/5">
+      <div className="container mx-auto p-4">
         <div className="flex justify-between items-center gap-x-10">
           <Image alt="MoovieTime" src={logo} priority />
 
           <SearchInput className="grow" />
 
-          <button
-            className={`${linkClassNames} flex align-middle items-center`}
-          >
+          <button className={`${linkClassNames} flex items-center`}>
             <ViewGridIcon size={20} color="inherit" className="mr-3" />
             CATEGORIES
           </button>

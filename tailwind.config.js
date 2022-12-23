@@ -9,7 +9,11 @@ module.exports = {
   ],
   theme: {
     colors,
-    extend: {},
+    extend: {
+      flexGrow: {
+        2: 2,
+      },
+    },
   },
   plugins: [],
 };
