@@ -17,7 +17,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="fixed w-full z-10 bg-ffffff/5">
+    <div className="fixed w-full z-10 left-0 top-0 bg-ffffff/5">
       <div className="container mx-auto p-4">
         <div className="flex justify-between items-center gap-x-10">
           <Image alt="MoovieTime" src={logo} priority />
@@ -25,7 +25,7 @@ const Navbar = () => {
           <SearchInput className="grow" />
 
           <button className={`${linkClassNames} flex items-center`}>
-            <ViewGridIcon size={20} color="inherit" className="mr-3" />
+            <ViewGridIcon size={20} className="mr-3" />
             CATEGORIES
           </button>
 

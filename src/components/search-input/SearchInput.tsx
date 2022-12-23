@@ -1,6 +1,5 @@
 import MovieIcon from '@components/icons/movie';
 import SearchIcon from '@components/icons/search/Search';
-import colors from '@constants/colors';
 import { SearchInputProps } from './SearchInput.interface';
 import classNames from 'classnames';
 
@@ -8,18 +7,21 @@ import css from './SearchInput.module.scss';
 
 const SearchInput = ({ className }: SearchInputProps) => {
   const leftIconCN = classNames(
-    `${css.input__icon} ${css['input__icon--left']} opacity-20`,
+    `${css.input__icon} ${css['input__icon--left']}`,
+    'fill-ffffff',
+    'opacity-20',
   );
 
   const rightIconCN = classNames(
     `${css.input__icon} ${css['input__icon--right']}`,
+    'fill-ffffff',
   );
 
   return (
     <div className={`${className} ${css.input}`}>
-      <MovieIcon className={leftIconCN} color={colors.ffffff} />
+      <MovieIcon className={leftIconCN} />
 
-      <SearchIcon className={rightIconCN} color={colors.ffffff} size={16} />
+      <SearchIcon className={rightIconCN} size={16} />
 
       <input
         type="text"

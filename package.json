@@ -11,15 +11,20 @@
   "dependencies": {
     "@next/font": "~13.1.0",
     "classnames": "~2.3.2",
+    "lodash": "~4.17.21",
     "next": "~13.1.0",
     "react": "~18.2.0",
-    "react-dom": "~18.2.0"
+    "react-dom": "~18.2.0",
+    "react-slick": "~0.29.0",
+    "slick-carousel": "~1.8.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "~0.5.3",
+    "@types/lodash": "~4.14.191",
     "@types/node": "~18.11.17",
     "@types/react": "~18.0.26",
     "@types/react-dom": "~18.0.9",
+    "@types/react-slick": "~0.23.10",
     "@typescript-eslint/eslint-plugin": "~5.42.1",
     "@typescript-eslint/parser": "~5.42.1",
     "autoprefixer": "~10.4.13",

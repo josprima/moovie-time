@@ -1,9 +1,9 @@
 import { IconProps } from '../Icon.interface';
 import IconWrapper from '../IconWrapper';
 
-const ViewGridIcon = ({ size, color, className }: IconProps) => {
+const ViewGridIcon = ({ size, className }: IconProps) => {
   return (
-    <IconWrapper className={className} color={color} size={size}>
+    <IconWrapper className={className} size={size}>
       <>
         <path d="M6.0001 3.59998C4.67461 3.59998 3.6001 4.67449 3.6001 5.99998V8.39998C3.6001 9.72546 4.67461 10.8 6.0001 10.8H8.4001C9.72558 10.8 10.8001 9.72546 10.8001 8.39998V5.99998C10.8001 4.67449 9.72558 3.59998 8.4001 3.59998H6.0001Z" />
         <path d="M6.0001 13.2C4.67461 13.2 3.6001 14.2745 3.6001 15.6V18C3.6001 19.3255 4.67461 20.4 6.0001 20.4H8.4001C9.72558 20.4 10.8001 19.3255 10.8001 18V15.6C10.8001 14.2745 9.72558 13.2 8.4001 13.2H6.0001Z" />

@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 
 export interface IconProps {
-  color?: string;
   size?: number;
   className?: string;
 }
