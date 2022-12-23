@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
 
 const defaultBgColor = 'bg-ffffff/5';
+const secondaryBgColor = 'bg-0e1723';
 
 const Navbar = () => {
   const [bgColor, setBgColor] = useState(defaultBgColor);
@@ -23,7 +24,7 @@ const Navbar = () => {
 
   const onScroll = useCallback(() => {
     if (window.scrollY > 10) {
-      setBgColor('bg-0e1723');
+      setBgColor(secondaryBgColor);
     } else {
       setBgColor(defaultBgColor);
     }
