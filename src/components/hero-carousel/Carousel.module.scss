@@ -21,5 +21,12 @@
   &__text {
     height: 324px;
     flex-grow: 1;
+
+    &--overview {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 10;
+      overflow: hidden;
+    }
   }
 }

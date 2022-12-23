@@ -5,8 +5,13 @@ import SearchInput from '@components/search-input';
 import ViewGridIcon from '@components/icons/view-grid';
 import Link from 'next/link';
 import classNames from 'classnames';
+import { useCallback, useEffect, useState } from 'react';
+
+const defaultBgColor = 'bg-ffffff/5';
 
 const Navbar = () => {
+  const [bgColor, setBgColor] = useState(defaultBgColor);
+
   const linkClassNames = classNames(
     'text-ffffff',
     'hover:text-929292',
@@ -16,8 +21,26 @@ const Navbar = () => {
     'hover:fill-929292',
   );
 
+  const onScroll = useCallback(() => {
+    if (window.scrollY > 10) {
+      setBgColor('bg-0e1723');
+    } else {
+      setBgColor(defaultBgColor);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
   return (
-    <div className="fixed w-full z-10 left-0 top-0 bg-ffffff/5">
+    <div
+      className={`fixed w-full z-30 left-0 top-0 transition-colors duration-500 ${bgColor}`}
+    >
       <div className="container mx-auto p-4">
         <div className="flex justify-between items-center gap-x-10">
           <Image alt="MoovieTime" src={logo} priority />

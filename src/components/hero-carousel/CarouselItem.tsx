@@ -20,10 +20,10 @@ const CarouselItem = ({
       <div className={css.item__image}>
         <Image
           src={poster_path}
-          width={300}
-          height={300}
-          alt="movie"
-          priority
+          width={240}
+          height={364}
+          alt={title}
+          priority={false}
         />
       </div>
 
@@ -41,7 +41,10 @@ const CarouselItem = ({
           <span>{genres[0].name}</span>
         </div>
 
-        <p className="text-xs" style={{ lineHeight: '18px' }}>
+        <p
+          className={`${css['item__text--overview']} text-xs`}
+          style={{ lineHeight: '18px' }}
+        >
           {overview}
         </p>
       </div>

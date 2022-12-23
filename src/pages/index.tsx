@@ -1,9 +1,10 @@
 import _keyBy from 'lodash/keyBy';
+import Head from 'next/head';
 
 import Navbar from '@components/navbar';
 import Footer from '@components/footer';
-import Head from 'next/head';
 import HeroCarousel from '@components/hero-carousel';
+import DiscoverMovies from '@components/discover-movies';
 
 import API_URL from '@constants/api-url';
 import { CarouselItemProps } from '@components/hero-carousel/HeroCarousel.interfaces';
@@ -20,9 +21,8 @@ export default function Home({ movies }: { movies: CarouselItemProps[] }) {
       </Head>
 
       <Navbar />
-
       <HeroCarousel movies={movies} />
-
+      <DiscoverMovies movies={movies} />
       <Footer />
     </>
   );
