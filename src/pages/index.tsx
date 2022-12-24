@@ -8,9 +8,15 @@ import DiscoverMovies from '@components/discover-movies';
 
 import API_URL from '@constants/api-url';
 import { CarouselItemProps } from '@components/hero-carousel/HeroCarousel.interfaces';
-import { MovieInterface } from 'interfaces/Movie.interfaces';
+import { GenreInterface, MovieInterface } from 'interfaces/Movie.interfaces';
 
-export default function Home({ movies }: { movies: CarouselItemProps[] }) {
+export default function Home({
+  movies,
+  genres,
+}: {
+  movies: CarouselItemProps[];
+  genres: GenreInterface[];
+}) {
   return (
     <>
       <Head>
@@ -20,7 +26,7 @@ export default function Home({ movies }: { movies: CarouselItemProps[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
+      <Navbar genres={genres} />
       <HeroCarousel movies={movies} />
       <DiscoverMovies movies={movies} />
       <Footer />
@@ -52,6 +58,7 @@ export async function getStaticProps() {
   return {
     props: {
       movies: formattedMovies,
+      genres,
     },
     revalidate: 60 * 60, // 1 Hour
   };

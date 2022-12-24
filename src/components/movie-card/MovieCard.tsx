@@ -12,7 +12,7 @@ const MovieCard = ({
   genres,
 }: CarouselItemProps) => {
   return (
-    <div className="basis-52 grow text-ffffff">
+    <div className="basis-52 text-ffffff">
       <div className="relative z-10">
         <Image
           src={poster_path}

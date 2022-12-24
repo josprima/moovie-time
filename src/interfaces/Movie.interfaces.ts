@@ -7,3 +7,8 @@ export interface MovieInterface {
   genre_ids: number[];
   poster_path: string;
 }
+
+export interface GenreInterface {
+  id: number;
+  name: string;
+}
