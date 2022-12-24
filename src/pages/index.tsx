@@ -69,7 +69,7 @@ export async function getStaticProps() {
 
   const formattedMovies = movies.map((movie: MovieInterface) => ({
     ...movie,
-    poster_path: `https://image.tmdb.org/t/p/w300/${movie.poster_path}`,
+    poster_path: `/image/w185${movie.poster_path}`,
     genres: getGenres(movie.genre_ids),
   }));
 

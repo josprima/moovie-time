@@ -62,7 +62,7 @@ const MovieDetailPage = ({
 
       const formattedMovies = results.map((movie: MovieInterface) => ({
         ...movie,
-        poster_path: `https://image.tmdb.org/t/p/w185${movie.poster_path}`,
+        poster_path: `/image/w185${movie.poster_path}`,
         genres: getGenres(movie.genre_ids),
       }));
 
@@ -202,8 +202,8 @@ export async function getServerSideProps({ params, res }: any) {
 
   const formattedMovie = {
     ...movieData,
-    backdrop_path: `https://image.tmdb.org/t/p/w1280${movieData.backdrop_path}`,
-    poster_path: `https://image.tmdb.org/t/p/w185${movieData.poster_path}`,
+    backdrop_path: `/image/w1280${movieData.backdrop_path}`,
+    poster_path: `/image/w185${movieData.poster_path}`,
   };
 
   console.log(formattedMovie);
