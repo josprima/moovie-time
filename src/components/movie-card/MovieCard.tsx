@@ -1,5 +1,6 @@
 import { CarouselItemProps } from '@components/hero-carousel/HeroCarousel.interfaces';
 import StarIcon from '@components/icons/star';
+import ImageWrapper from '@components/image-wrapper/ImageWrapper';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -14,13 +15,11 @@ const MovieCard = ({
   return (
     <div className="basis-52 text-ffffff">
       <div className="relative z-10">
-        <Image
-          src={poster_path}
-          alt={title}
-          width={220}
-          height={330}
-          className="w-full h-auto mb-3"
-        />
+        <div className="mb-3">
+          <ImageWrapper width="full" height={330}>
+            <Image src={poster_path} alt={title} width={220} height={330} />
+          </ImageWrapper>
+        </div>
 
         <div className="absolute top-0 right-0 z-10 p-3 bg-1e232b/80 font-bold text-lg leading-none">
           {vote_average}
@@ -33,7 +32,7 @@ const MovieCard = ({
             <span className="font-semibold text-2xl">{vote_average}</span>
           </div>
 
-          <span className="font-semibold text-lg">{genres[0].name}</span>
+          <span className="font-semibold text-lg">{genres[0]?.name}</span>
 
           <Link
             href={`/movies/${id}`}

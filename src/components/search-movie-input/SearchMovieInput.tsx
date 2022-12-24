@@ -3,18 +3,18 @@ import _isEmpty from 'lodash/isEmpty';
 
 import MovieIcon from '@components/icons/movie';
 import SearchIcon from '@components/icons/search/Search';
-import { SearchInputProps } from './SearchMovieInput.interface';
+import { SearchMovieInputProps } from './SearchMovieInput.interface';
 import classNames from 'classnames';
 
 import css from './SearchMovieInput.module.scss';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { InputEventInterface } from '@interfaces/Event.interfaces';
 import { MovieInterface } from '@interfaces/Movie.interfaces';
-import Link from 'next/link';
 import formatSearchResult from '@utils/format-search-result';
 import useClickOutside from '@hooks/click-outside';
+import { useRouter } from 'next/router';
 
-const SearchInput = ({ className }: SearchInputProps) => {
+const SearchMovieInput = ({ className }: SearchMovieInputProps) => {
   const [keyWord, setKeyWord] = useState('');
   const [movies, setMovies] = useState<MovieInterface[]>([]);
   const [searchResultHeight, setSearchResultHeight] = useState(0);
@@ -22,6 +22,8 @@ const SearchInput = ({ className }: SearchInputProps) => {
 
   const searchResultRef = useRef<HTMLDivElement>(null);
   const searchBoxRef = useRef<HTMLDivElement>(null);
+
+  const router = useRouter();
 
   useClickOutside(searchBoxRef, () => {
     setShowSearchResult(false);
@@ -46,7 +48,10 @@ const SearchInput = ({ className }: SearchInputProps) => {
 
       const formattedMovies = data?.results?.map((movie: MovieInterface) => ({
         ...movie,
-        title: formatSearchResult({ result: movie.title, keyWord: value }),
+        formattedTitle: formatSearchResult({
+          result: movie.title,
+          keyWord: value,
+        }),
       }));
 
       setMovies(formattedMovies || []);
@@ -78,6 +83,13 @@ const SearchInput = ({ className }: SearchInputProps) => {
 
   const handleOnFocus = () => {
     setShowSearchResult(true);
+  };
+
+  const handleOnClickResult = (movie: MovieInterface) => {
+    setShowSearchResult(false);
+    setKeyWord(movie.title);
+
+    router.push(`/movies/${movie.id}`);
   };
 
   useEffect(() => {
@@ -118,11 +130,11 @@ const SearchInput = ({ className }: SearchInputProps) => {
         >
           <div ref={searchResultRef}>
             {movies.map((movie) => (
-              <Link
+              <button
                 key={movie.id}
-                href={`/movies/${movie.id}`}
                 className="text-sm text-e5e5e5 block px-4 py-2 first:pt-4 last:pb-4"
-                dangerouslySetInnerHTML={{ __html: movie.title }}
+                dangerouslySetInnerHTML={{ __html: movie.formattedTitle }}
+                onClick={() => handleOnClickResult(movie)}
               />
             ))}
           </div>
@@ -132,4 +144,4 @@ const SearchInput = ({ className }: SearchInputProps) => {
   );
 };
 
-export default SearchInput;
+export default SearchMovieInput;

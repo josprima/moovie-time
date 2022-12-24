@@ -1,3 +1,3 @@
-export interface SearchInputProps {
+export interface SearchMovieInputProps {
   className: string;
 }
