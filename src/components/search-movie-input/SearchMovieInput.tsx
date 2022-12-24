@@ -3,10 +3,10 @@ import _isEmpty from 'lodash/isEmpty';
 
 import MovieIcon from '@components/icons/movie';
 import SearchIcon from '@components/icons/search/Search';
-import { SearchInputProps } from './SearchInput.interface';
+import { SearchInputProps } from './SearchMovieInput.interface';
 import classNames from 'classnames';
 
-import css from './SearchInput.module.scss';
+import css from './SearchMovieInput.module.scss';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { InputEventInterface } from 'interfaces/Event.interfaces';
 import { MovieInterface } from 'interfaces/Movie.interfaces';
