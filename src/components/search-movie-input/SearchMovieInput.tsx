@@ -8,10 +8,11 @@ import classNames from 'classnames';
 
 import css from './SearchMovieInput.module.scss';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { InputEventInterface } from 'interfaces/Event.interfaces';
-import { MovieInterface } from 'interfaces/Movie.interfaces';
+import { InputEventInterface } from '@interfaces/Event.interfaces';
+import { MovieInterface } from '@interfaces/Movie.interfaces';
 import Link from 'next/link';
-import formatSearchResult from 'utils/format-search-result';
+import formatSearchResult from '@utils/format-search-result';
+import useClickOutside from '@hooks/click-outside';
 
 const SearchInput = ({ className }: SearchInputProps) => {
   const [keyWord, setKeyWord] = useState('');
@@ -21,6 +22,10 @@ const SearchInput = ({ className }: SearchInputProps) => {
 
   const searchResultRef = useRef<HTMLDivElement>(null);
   const searchBoxRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside(searchBoxRef, () => {
+    setShowSearchResult(false);
+  });
 
   const leftIconCN = classNames(
     `${css.input__icon} ${css['input__icon--left']}`,
@@ -71,13 +76,6 @@ const SearchInput = ({ className }: SearchInputProps) => {
     debouncedSearchTitle(value);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleClickOutside = (e: any) => {
-    if (searchBoxRef.current && !searchBoxRef.current.contains(e.target)) {
-      setShowSearchResult(false);
-    }
-  };
-
   const handleOnFocus = () => {
     setShowSearchResult(true);
   };
@@ -91,14 +89,6 @@ const SearchInput = ({ className }: SearchInputProps) => {
       }
     }
   }, [keyWord, movies, searchResultRef]);
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   return (
     <div className={`${className} ${css.input} relative`} ref={searchBoxRef}>

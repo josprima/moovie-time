@@ -2,23 +2,16 @@ import Image from 'next/image';
 
 import logo from '@images/MoovieTime-Logo.svg';
 import SearchMovieInput from '@components/search-movie-input';
-import ViewGridIcon from '@components/icons/view-grid';
 import { useCallback, useEffect, useState } from 'react';
 
 import { NavbarProps } from './Navbar.interfaces';
 import { NavItem } from './NavItem';
-import { GenreInterface } from 'interfaces/Movie.interfaces';
+import Link from 'next/link';
 
 const defaultBgColor = 'bg-ffffff/5';
 const secondaryBgColor = 'bg-2f363f';
 
-const mapGenres = (genres: GenreInterface[]) =>
-  genres.map((genre) => ({
-    text: genre.name,
-    url: `/genres/${genre.id}`,
-  }));
-
-const Navbar = ({ genres }: NavbarProps) => {
+const Navbar = ({ menus }: NavbarProps) => {
   const [bgColor, setBgColor] = useState(defaultBgColor);
 
   const onScroll = useCallback(() => {
@@ -42,19 +35,21 @@ const Navbar = ({ genres }: NavbarProps) => {
       className={`fixed w-full z-30 left-0 top-0 transition-colors duration-500 ${bgColor}`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center gap-x-10">
-          <Image alt="MoovieTime" src={logo} priority />
+        <div className="flex justify-between items-center gap-x-10 py-3">
+          <Link href="/">
+            <Image alt="MoovieTime" src={logo} priority />
+          </Link>
 
           <SearchMovieInput className="grow" />
 
-          <NavItem
-            text="CATEGORIES"
-            icon={<ViewGridIcon size={20} className="mr-3" />}
-            menus={mapGenres(genres)}
-          />
-          <NavItem text="MOVIES" href="/movies" />
-          <NavItem text="TV SHOWS" href="/tv-shows" />
-          <NavItem text="LOGIN" href="/login" />
+          {menus?.map((menu) => (
+            <NavItem
+              key={menu.text}
+              text={menu.text}
+              menus={menu.menus}
+              href={menu.href}
+            />
+          ))}
         </div>
       </div>
     </div>

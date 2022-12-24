@@ -1,9 +1,10 @@
+import ViewGridIcon from '@components/icons/view-grid';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { NavItemProps } from './Navbar.interfaces';
 import css from './Navbar.module.scss';
 
-export const NavItem = ({ text, icon, menus, href = '' }: NavItemProps) => {
+export const NavItem = ({ text, menus, href = '' }: NavItemProps) => {
   const linkClassNames = classNames(
     'text-ffffff',
     'hover:text-929292',
@@ -18,7 +19,8 @@ export const NavItem = ({ text, icon, menus, href = '' }: NavItemProps) => {
   if (menus) {
     return (
       <button className={`${linkClassNames} flex items-center`}>
-        {icon}
+        <ViewGridIcon size={20} className="mr-3" />
+
         <span>{text}</span>
 
         <div className={`${css.menu__dropdown} bg-ffffff rounded-sm`}>

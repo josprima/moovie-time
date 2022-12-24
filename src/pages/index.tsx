@@ -1,38 +1,56 @@
 import _keyBy from 'lodash/keyBy';
 import Head from 'next/head';
 
-import Navbar from '@components/navbar';
-import Footer from '@components/footer';
 import HeroCarousel from '@components/hero-carousel';
 import DiscoverMovies from '@components/discover-movies';
 
 import API_URL from '@constants/api-url';
 import { CarouselItemProps } from '@components/hero-carousel/HeroCarousel.interfaces';
-import { GenreInterface, MovieInterface } from 'interfaces/Movie.interfaces';
+import { GenreInterface, MovieInterface } from '@interfaces/Movie.interfaces';
+import Navbar from '@components/navbar';
+import Footer from '@components/footer';
+import mapGenres from '@utils/map-genres';
 
-export default function Home({
+const HomePage = ({
   movies,
   genres,
 }: {
   movies: CarouselItemProps[];
   genres: GenreInterface[];
-}) {
+}) => {
+  const navMenus = [
+    {
+      text: 'CATEGORIES',
+      menus: mapGenres(genres),
+    },
+    {
+      text: 'MOVIES',
+      href: '/movies',
+    },
+    {
+      text: 'TV SHOWS',
+      href: '/tv-shows',
+    },
+    {
+      text: 'LOGIN',
+      href: '/login',
+    },
+  ];
+
   return (
     <>
       <Head>
-        <title>MoovieTime</title>
+        <title>MoovieTime | HomePage</title>
         <meta name="description" content="MoovieTime" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar genres={genres} />
+      <Navbar menus={navMenus} />
       <HeroCarousel movies={movies} />
       <DiscoverMovies movies={movies} />
       <Footer />
     </>
   );
-}
+};
 
 export async function getStaticProps() {
   const [moviesResponse, genresResponse] = await Promise.all([
@@ -63,3 +81,5 @@ export async function getStaticProps() {
     revalidate: 60 * 60, // 1 Hour
   };
 }
+
+export default HomePage;

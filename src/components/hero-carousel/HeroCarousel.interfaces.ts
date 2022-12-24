@@ -1,4 +1,4 @@
-import { MovieInterface } from 'interfaces/Movie.interfaces';
+import { MovieInterface } from '@interfaces/Movie.interfaces';
 
 export interface CarouselItemProps extends MovieInterface {
   genres: {
