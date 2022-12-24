@@ -9,6 +9,17 @@ export interface MovieInterface {
   genres: GenreInterface[];
   poster_path: string;
   backdrop_path: string;
+  vote_count: number;
+  status: string;
+  spoken_languages: {
+    english_name: string;
+    name: string;
+  }[];
+  budget: number;
+  production_companies: {
+    id: 574;
+    name: string;
+  }[];
 }
 
 export interface GenreInterface {

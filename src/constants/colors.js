@@ -12,6 +12,7 @@ const colors = {
   c4c4c4: '#C4C4C4',
   '0e1723': '#0E1723',
   e0e0e0: '#E0E0E0',
+  f9f9f9: '#f9f9f9',
 };
 
 module.exports = colors;

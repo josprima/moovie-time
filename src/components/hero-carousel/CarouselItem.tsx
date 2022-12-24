@@ -4,6 +4,7 @@ import css from './Carousel.module.scss';
 import classNames from 'classnames';
 import StarIcon from '@components/icons/star';
 import { CarouselItemProps } from './HeroCarousel.interfaces';
+import dayjs from 'dayjs';
 
 const CarouselItem = ({
   genres,
@@ -36,7 +37,7 @@ const CarouselItem = ({
         <h1 className="text-2xl font-medium mb-2">{title}</h1>
 
         <div className="flex items-center gap-2 mb-2 text-base">
-          <span>{new Date(release_date).getFullYear()}</span>
+          <span>{dayjs(release_date).year()}</span>
           <span className="w-2 h-2 rounded bg-929292 shrink-0"></span>
           <span>{genres[0].name}</span>
         </div>

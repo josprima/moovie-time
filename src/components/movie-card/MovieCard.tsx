@@ -1,6 +1,7 @@
 import { CarouselItemProps } from '@components/hero-carousel/HeroCarousel.interfaces';
 import StarIcon from '@components/icons/star';
 import ImageWrapper from '@components/image-wrapper/ImageWrapper';
+import dayjs from 'dayjs';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -44,9 +45,7 @@ const MovieCard = ({
       </div>
 
       <h4 className="text-base font-semibold">{title}</h4>
-      <span className="text-sm text-929292">
-        {new Date(release_date).getFullYear()}
-      </span>
+      <span className="text-sm text-929292">{dayjs(release_date).year()}</span>
     </div>
   );
 };
